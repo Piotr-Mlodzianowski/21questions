@@ -1,0 +1,136 @@
+{
+  "score": [
+    {
+      "id": 1,
+      "name": "Piotr",
+      "category": "video games",
+      "difficulty": "medium",
+      "score": "21pts"
+    },
+    {
+      "id": 2,
+      "name": "Stefan",
+      "category": "movies",
+      "difficulty": "easy",
+      "score": "14pts"
+    },
+    {
+      "name": "Pio",
+      "difficulty": "easy",
+      "score": 2,
+      "id": 3
+    },
+    {
+      "name": "Pio",
+      "category": "11",
+      "difficulty": "easy",
+      "score": 2,
+      "id": 4
+    },
+    {
+      "name": "Pio",
+      "category": "10",
+      "difficulty": "easy",
+      "score": 2,
+      "id": 5
+    },
+    {
+      "name": "Pio",
+      "category": "11",
+      "difficulty": "easy",
+      "score": 2,
+      "id": 6
+    },
+    {
+      "name": "Pio",
+      "category": "10",
+      "difficulty": "easy",
+      "score": "2pts",
+      "id": 7
+    },
+    {
+      "name": "Pio",
+      "category": "10",
+      "difficulty": "easy",
+      "score": "2pts",
+      "id": 8
+    },
+    {
+      "name": "Pio",
+      "category": "10",
+      "difficulty": "easy",
+      "score": "2pts",
+      "id": 9
+    },
+    {
+      "name": "Oip",
+      "category": "10",
+      "difficulty": "easy",
+      "score": "2pts",
+      "id": 10
+    },
+    {
+      "name": "Pio",
+      "category": "10",
+      "difficulty": "easy",
+      "score": "2pts",
+      "id": 11
+    },
+    {
+      "name": "Pio",
+      "category": "10",
+      "difficulty": "easy",
+      "score": "2pts",
+      "id": 12
+    },
+    {
+      "name": "Pio",
+      "category": "10",
+      "difficulty": "easy",
+      "score": "1pts",
+      "id": 13
+    },
+    {
+      "name": "Pio",
+      "category": "10",
+      "difficulty": "easy",
+      "score": "2pts",
+      "id": 14
+    },
+    {
+      "name": "oip",
+      "category": "10",
+      "difficulty": "easy",
+      "score": "2pts",
+      "id": 15
+    },
+    {
+      "name": "wio",
+      "category": "10",
+      "difficulty": "easy",
+      "score": "3pts",
+      "id": 16
+    },
+    {
+      "name": "Pio",
+      "category": "10",
+      "difficulty": "easy",
+      "score": "3pts",
+      "id": 17
+    },
+    {
+      "name": "Pio",
+      "category": "10",
+      "difficulty": "easy",
+      "score": "3pts",
+      "id": 18
+    },
+    {
+      "name": "Pio",
+      "category": "10",
+      "difficulty": "easy",
+      "score": "3pts",
+      "id": 19
+    }
+  ]
+}
