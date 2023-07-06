@@ -5,7 +5,7 @@ import {DataContext} from "../../DataContext";
 const Menu = () => {
     const {setEnteredName, setSelectedCategory, setSelectedDifficulty, setScore} = useContext(DataContext);
     const navigation = useNavigate();
-    const handleNewGameCLick = () => {
+    const handleNewGameClick = () => {
         setEnteredName("");
         setSelectedCategory("");
         setSelectedDifficulty("");
@@ -20,7 +20,7 @@ const Menu = () => {
     return (
         <>
             <nav>
-                <button onClick={handleNewGameCLick}>New game</button>
+                <button onClick={handleNewGameClick}>New game</button>
                 <button onClick={handleScoreboardClick}>Scoreboard</button>
             </nav>
         </>
