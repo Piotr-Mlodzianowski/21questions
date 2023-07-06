@@ -18,12 +18,16 @@ const Menu = () => {
     }
 
     return (
-        <>
-            <nav>
-                <button onClick={handleNewGameClick}>New game</button>
-                <button onClick={handleScoreboardClick}>Scoreboard</button>
-            </nav>
-        </>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container d-flex justify-content-center">
+                <button className="btn btn-primary me-2" onClick={handleNewGameClick}>
+                    New Game
+                </button>
+                <button className="btn btn-secondary" onClick={handleScoreboardClick}>
+                    Scoreboard
+                </button>
+            </div>
+        </nav>
     );
 };
 
