@@ -81,6 +81,9 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
         navigate("/playerscore");
     };
 
+    const checkButton = questionCounter === 3 ? <button onClick={handleLastQuestion}>Score</button> :
+        <button onClick={handleNext}>Next question</button>;
+
     return (
         <>
             <div className="container">
@@ -100,10 +103,7 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
                                         <label htmlFor={item}>{item}</label>
                                     </div>)}
                             </div>
-                            {chosenAnswer && (questionCounter === 3) ?
-                                <button onClick={handleLastQuestion}>Score</button> :
-                                <button onClick={handleNext}>Next question</button>}
-
+                            {chosenAnswer ? checkButton : <button hidden>Next question</button>}
                         </form>
                     </>}
             </div>
