@@ -20,18 +20,28 @@ const Settings = () => {
     console.log(selectedDifficulty);
 
     return (
-        <>
-            <div style={{display: "flex", flexDirection: "column"}}>
-                <SettingsName setName={setEnteredName}/>
-                <SettingsCategory setCategory={setSelectedCategory}/>
-                <SettingsDifficulty setDifficulty={setSelectedDifficulty}/>
+        <div className="container d-flex flex-column align-items-center justify-content-center vh-100">
+            <div className="card shadow-sm rounded p-4 mx-lg-5">
+                <div className="mb-4">
+                    <SettingsName setName={setEnteredName} />
+                </div>
+                <div className="mb-4">
+                    <SettingsCategory setCategory={setSelectedCategory} />
+                </div>
+                <div className="mb-4">
+                    <SettingsDifficulty setDifficulty={setSelectedDifficulty} />
+                </div>
+                <div className="d-flex justify-content-lg-center">
+                    {enteredName && selectedCategory && selectedDifficulty ? (
+                        <SettingsPlayButton />
+                    ) : (
+                        <button className="btn btn-success btn-lg" disabled>
+                            Play
+                        </button>
+                    )}
+                </div>
             </div>
-
-            <div>
-                {enteredName && selectedCategory && selectedDifficulty ? <SettingsPlayButton/> :
-                    <button disabled>Play</button>}
-            </div>
-        </>
+        </div>
     );
 };
 
