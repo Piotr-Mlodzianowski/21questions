@@ -81,34 +81,45 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
         navigate("/playerscore");
     };
 
-    const checkButton = questionCounter === 3 ? <button onClick={handleLastQuestion}>Score</button> :
-        <button onClick={handleNext}>Next question</button>;
+    const checkButton = questionCounter === 3 ?
+        <button className="btn btn-primary" onClick={handleLastQuestion}>Score</button> :
+        <button className="btn btn-primary" onClick={handleNext}>Next question</button>;
 
     return (
-        <>
-            <div className="container">
+        <div className="container d-flex align-items-center justify-content-center vh-100">
+            <div className="card shadow-sm bg-white rounded p-4 mx-md-5">
                 {!state && <div>Ładuję pytanie</div>}
-                {state &&
+                {state && (
                     <>
-                        <div>{currentQuestion.question}</div>
+                        <p className="mb-4 fs-4 text-center">{currentQuestion.question}</p>
                         <form>
                             <div>
-                                {shuffledAnswers.map((item) =>
-                                    <div key={item.index}>
-                                        <input type="radio" id={item}
-                                               name="answer"
-                                               value={item}
-                                               checked={chosenAnswer === item}
-                                               onChange={(e) => setChosenAnswer(e.target.value)}/>
-                                        <label htmlFor={item}>{item}</label>
-                                    </div>)}
+                                {shuffledAnswers.map((item) => (
+                                    <div className="form-check" key={item.index}>
+                                        <input
+                                            className="form-check-input"
+                                            type="radio"
+                                            id={item}
+                                            name="answer"
+                                            value={item}
+                                            checked={chosenAnswer === item}
+                                            onChange={(e) => setChosenAnswer(e.target.value)}
+                                        />
+                                        <label className="form-check-label" htmlFor={item}>
+                                            {item}
+                                        </label>
+                                    </div>
+                                ))}
                             </div>
                             {chosenAnswer ? checkButton : <button hidden>Next question</button>}
                         </form>
-                    </>}
+                    </>
+                )}
             </div>
-        </>
+        </div>
     );
 };
 
 export default CurrentQuestion;
+
+
