@@ -19,10 +19,10 @@ const SettingsCategory = ({setCategory}) => {
         <>
             {!data && <div>Loading data</div>}
             {data && (
-                <select
-                    name="category"
-                    id="category"
-                    onChange={e => setCategory(e.target.value)}
+                <select className="form-select form-select-lg mb-3"
+                        name="category"
+                        id="category"
+                        onChange={e => setCategory(e.target.value)}
                 >
                     <option value="" disabled hidden>
                         Choose category
