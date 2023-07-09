@@ -4,7 +4,7 @@ const SettingsName = ({setName}) => {
 
     return (
         <>
-            <input type="text" placeholder="Enter your name" onChange={(e) => setName(e.target.value)}/>
+            <input className="form-control" type="text" placeholder="Enter your name" onChange={(e) => setName(e.target.value)}/>
         </>
     );
 };
