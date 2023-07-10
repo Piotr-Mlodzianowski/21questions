@@ -18,6 +18,7 @@ const ErrorModal = () => {
 
     const handleNewGameClick = (e) => {
         e.preventDefault();
+        console.log("Clicked")
         setShowErrorModal(false);
         setEnteredName("");
         setSelectedCategory("");
