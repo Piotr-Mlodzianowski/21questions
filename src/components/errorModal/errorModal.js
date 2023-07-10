@@ -18,7 +18,8 @@ const ErrorModal = () => {
 
     const handleNewGameClick = (e) => {
         e.preventDefault();
-        console.log("New game button clicked");
+        console.log("Clicked")
+        setShowErrorModal(false);
         setEnteredName("");
         setSelectedCategory("");
         setSelectedDifficulty("");
