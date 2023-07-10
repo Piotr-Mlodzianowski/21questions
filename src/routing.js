@@ -17,7 +17,8 @@ const Routing = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<Dashboard/>}>
-                        <Route path='start' element={<StartPage/>}/>
+                        <Route index element={<StartPage/>}/>
+                        <Route path='start' element={<StartPage/>}/>}
                         <Route path="settings" element={<Settings/>}/>
                         <Route path="game" element={<Questions/>}/>
                         <Route path="playerscore" element={<PlayerScore/>}/>
