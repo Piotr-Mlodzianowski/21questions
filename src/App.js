@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ThemeProvider from 'react-bootstrap/ThemeProvider'
 import Routing from "./routing"
 import {Container, Row} from 'react-bootstrap';
-import "./components/settings/settings.scss";
+
 
 
 function App() {
