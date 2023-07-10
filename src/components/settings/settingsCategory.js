@@ -1,8 +1,9 @@
 import React, {useContext, useEffect} from "react";
 import {DataContext} from "../../DataContext";
+import ErrorModal from "../errorModal/errorModal";
 
 const SettingsCategory = ({setCategory}) => {
-    const {data, setData} = useContext(DataContext);
+    const {data, setData, showErrorModal, setShowErrorModal} = useContext(DataContext);
 
     const categoryURL = "https://opentdb.com/api_category.php";
 
@@ -12,11 +13,15 @@ const SettingsCategory = ({setCategory}) => {
         })
             .then(response => response.json())
             .then(data => setData(data.trivia_categories))
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err);
+                setShowErrorModal(true);
+            });
     }, []);
 
     return (
         <>
+            {showErrorModal && <ErrorModal/>}
             {!data && <div>Loading data</div>}
             {data && (
                 <select className="form-select form-select-lg mb-3"
