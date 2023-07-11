@@ -1,11 +1,11 @@
 import React from "react";
+import Form from "react-bootstrap/Form";
 
 const SettingsName = ({setName}) => {
 
     return (
-        <>
-            <input className="form-control" type="text" placeholder="Enter your name" onChange={(e) => setName(e.target.value)}/>
-        </>
+        <Form.Control style={{backgroundColor: "#e5e9f0"}} size="lg" placeholder="Enter your name"
+                      onChange={(e) => setName(e.target.value)}/>
     );
 };
 

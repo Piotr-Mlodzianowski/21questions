@@ -1,5 +1,6 @@
 import React, {useContext, useEffect} from "react";
 import {DataContext} from "../../DataContext";
+import Form from 'react-bootstrap/Form';
 import ErrorModal from "../errorModal/errorModal";
 
 const SettingsCategory = ({setCategory}) => {
@@ -23,24 +24,14 @@ const SettingsCategory = ({setCategory}) => {
         <>
             {showErrorModal && <ErrorModal/>}
             {!data && <div>Loading data</div>}
-            {data && (
-                <select className="form-select form-select-lg mb-3"
-                        name="category"
-                        id="category"
-                        onChange={e => setCategory(e.target.value)}
-                >
-                    <option value="" disabled hidden>
-                        Choose category
-                    </option>
-                    {data.map(item => (
-                        <option key={item.id} value={item.id}>
-                            {item.name}
-                        </option>
+            {data &&
+                <Form.Select style={{backgroundColor: "#e5e9f0"}} size="lg" onChange={e => setCategory(e.target.value)}>
+                    <option disabled selected hidden>Choose category</option>
+                    {data.map(item => (<option key={item.id} value={item.id}>{item.name}</option>
                     ))}
-                </select>
-            )}
+                </Form.Select>}
         </>
-    );
+    )
 };
 
 export default SettingsCategory;
