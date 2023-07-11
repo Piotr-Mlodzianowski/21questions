@@ -1,6 +1,8 @@
 import React, {useContext} from "react";
 import {DataContext} from "../../DataContext";
 import {useNavigate} from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import "./settings.scss";
 
 const SettingsPlayButton = () => {
     const {enteredName, selectedCategory, selectedDifficulty} = useContext(DataContext);
@@ -16,7 +18,7 @@ const SettingsPlayButton = () => {
 
     return (
         <>
-            <button onClick={handleClick}>Play</button>
+            <Button className="settings__playButton" variant="success" size="lg" onClick={handleClick}>Play</Button>
         </>
     );
 };
