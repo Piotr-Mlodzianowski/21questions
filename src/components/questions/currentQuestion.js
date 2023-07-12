@@ -113,9 +113,8 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
                                                 checked={chosenAnswer === item}
                                                 onChange={(e) => setChosenAnswer(e.target.value)}
                                             />
-                                            <label className="form-check-label answers__label" htmlFor={item}>
-                                                <div dangerouslySetInnerHTML={{__html: item}}></div>
-                                            </label>
+                                            <label className="form-check-label answers__label" htmlFor={item}
+                                                   dangerouslySetInnerHTML={{__html: item}}/>
                                         </div>
                                     ))}
                                 </div>
