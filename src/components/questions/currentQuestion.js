@@ -1,6 +1,11 @@
 import React, {useContext, useEffect, useState} from "react";
 import {DataContext} from "../../DataContext";
 import {useNavigate} from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import "./currentQuestion.scss"
 
 export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficulty, questions}) => {
     const [state, setState] = useState(false);
@@ -82,41 +87,47 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
     };
 
     const checkButton = questionCounter === 3 ?
-        <button className="btn btn-primary" onClick={handleLastQuestion}>Score</button> :
-        <button className="btn btn-primary" onClick={handleNext}>Next question</button>;
+        <Button className="btn btn-primary question__button" onClick={handleLastQuestion}>Score</Button> :
+        <Button className="btn btn-primary question__button" onClick={handleNext}>Next question</Button>;
 
     return (
-        <div className="container d-flex align-items-center justify-content-center vh-100">
-            <div className="card shadow-sm bg-white rounded p-4 mx-md-5">
-                {!state && <div>Ładuję pytanie</div>}
-                {state && (
-                    <>
-                        <p className="mb-4 fs-4 text-center">{currentQuestion.question}</p>
-                        <form>
-                            <div>
-                                {shuffledAnswers.map((item) => (
-                                    <div className="form-check" key={item.index}>
-                                        <input
-                                            className="form-check-input"
-                                            type="radio"
-                                            id={item}
-                                            name="answer"
-                                            value={item}
-                                            checked={chosenAnswer === item}
-                                            onChange={(e) => setChosenAnswer(e.target.value)}
-                                        />
-                                        <label className="form-check-label" htmlFor={item}>
-                                            {item}
-                                        </label>
-                                    </div>
-                                ))}
-                            </div>
-                            {chosenAnswer ? checkButton : <button hidden>Next question</button>}
-                        </form>
-                    </>
-                )}
-            </div>
-        </div>
+        <Container className="d-flex flex-column align-items-center justify-content-center question__container">
+            <Card className="border-0 shadow p-3 mb-5 rounded question__card">
+                <Card.Body className="d-flex flex-column align-items-center justify-content-between question__cardBody">
+                    {!state && <div>Ładuję pytanie</div>}
+                    {state && (
+                        <>
+                            <p className="mb-4 fs-4 text-center">
+                                <div dangerouslySetInnerHTML={{__html: currentQuestion.question}}></div>
+                            </p>
+                            <Form>
+                                <div className="answers">
+                                    {shuffledAnswers.map((item) => (
+                                        <div className="form-check" key={item.index}>
+                                            <input
+                                                className="answers__radio"
+                                                type="radio"
+                                                id={item}
+                                                name="answer"
+                                                value={item}
+                                                checked={chosenAnswer === item}
+                                                onChange={(e) => setChosenAnswer(e.target.value)}
+                                            />
+                                            <label className="form-check-label answers__label" htmlFor={item}>
+                                                <div dangerouslySetInnerHTML={{__html: item}}></div>
+                                            </label>
+                                        </div>
+                                    ))}
+                                </div>
+                            </Form>
+                        </>
+                    )}
+                    {chosenAnswer ? checkButton :
+                        <Button variant="secondary" className="question__button" disabled>Next
+                            question</Button>}
+                </Card.Body>
+            </Card>
+        </Container>
     );
 };
 
