@@ -1,0 +1,23 @@
+.scoreboard {
+  &__container {
+    height: 90vh;
+
+  }
+
+  &__select {
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+  }
+
+  &__card {
+    width: 45vw;
+    height: 50vh;
+
+  }
+
+  &__table {
+    overflow: scroll;
+  }
+
+}
