@@ -1,0 +1,52 @@
+.question {
+  &__container {
+    height: 90vh;
+    min-width: 50vh;
+  }
+
+  &__card {
+    background-color: #e5e9f0;
+  }
+
+  &__cardBody {
+    width: 50vw;
+    min-height: 40vh;
+  }
+
+  &__button {
+    background-color: #33a1eb;
+    border: none;
+    color: #fff;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-family: inherit;
+    padding: 1.3rem;
+    margin-top: 30px;
+  }
+
+}
+
+.answers {
+  margin-top: 30px;
+
+  &__radio {
+    appearance: none;
+
+    &:checked + .answers__label {
+      background-color: #8fbcbb;
+    }
+  }
+
+  &__label {
+    width: 30vw;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+
+    &:hover {
+      background-color: #81a1c1;
+    }
+  }
+}
