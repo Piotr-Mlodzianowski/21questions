@@ -97,13 +97,7 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
                     {!state && <div>Ładuję pytanie</div>}
                     {state && (
                         <>
-                            <div style={{
-                                width: "100%",
-                                paddingBottom: "10px",
-                                marginBottom: "10px",
-                                borderBottom: "1px solid black",
-                                textAlign: "center"
-                            }}>Question {questionCounter} of 21
+                            <div className="question__number">Question {questionCounter} of 21
                             </div>
                             <p className="mb-4 fs-4 text-center">
                                 <div dangerouslySetInnerHTML={{__html: currentQuestion.question}}></div>
