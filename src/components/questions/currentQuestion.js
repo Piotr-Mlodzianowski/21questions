@@ -60,12 +60,12 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
             "name": enteredName,
             "category": selectedCategory,
             "difficulty": selectedDifficulty,
-            "score": `${score}pts`
+            "score": `${score}`
         };
 
         if (chosenAnswer === currentQuestion.correct_answer) {
             setScore((prevState) => prevState + 1);
-            newScore.score = `${score + 1}pts`;
+            newScore.score = `${score + 1}`;
         }
 
         await fetch(`http://localhost:3000/score`, {
@@ -97,6 +97,14 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
                     {!state && <div>Ładuję pytanie</div>}
                     {state && (
                         <>
+                            <div style={{
+                                width: "100%",
+                                paddingBottom: "10px",
+                                marginBottom: "10px",
+                                borderBottom: "1px solid black",
+                                textAlign: "center"
+                            }}>Question {questionCounter} of 21
+                            </div>
                             <p className="mb-4 fs-4 text-center">
                                 <div dangerouslySetInnerHTML={{__html: currentQuestion.question}}></div>
                             </p>
