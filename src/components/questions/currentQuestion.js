@@ -133,5 +133,3 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
 };
 
 export default CurrentQuestion;
-
-
