@@ -1,18 +1,46 @@
-import React from "react";
-import Form from 'react-bootstrap/Form';
+import React, {useContext} from "react";
 import Button from 'react-bootstrap/Button';
+import {DataContext} from "../../DataContext";
+import "./settingsDifficulty.scss";
 
-const SettingsDifficulty = ({setDifficulty}) => {
-    const availableDifficulty = ["easy", "medium", "hard"];
+const SettingsDifficulty = () => {
 
+    const {selectedDifficulty, setSelectedDifficulty} = useContext(DataContext);
+
+
+    const handleClick = (e, level) => {
+        e.preventDefault();
+        setSelectedDifficulty(level);
+    };
 
     return (
         <>
-            <Form.Select style={{backgroundColor: "#e5e9f0"}} className="select-background" size="lg" onChange={e => setDifficulty(e.target.value)}>
-                <option disabled selected hidden>Choose difficulty</option>
-                {availableDifficulty.map((item) => <option key={item.index} value={item}>{item.charAt(0).toUpperCase()
-                    + item.slice(1)}</option>)}
-            </Form.Select>
+            <div className="d-flex justify-content-between difficulty__container">
+                <Button
+                    size="lg"
+                    variant={selectedDifficulty === "easy" ? "success" : "outline-info"}
+                    onClick={(e) => handleClick(e, "easy")}
+                    className="difficulty__btn difficulty__btn--easy"
+                >
+                    Easy
+                </Button>
+                <Button
+                    size="lg"
+                    variant={selectedDifficulty === "medium" ? "warning" : "outline-warning"}
+                    onClick={(e) => handleClick(e, "medium")}
+                    className="difficulty__btn difficulty__btn--medium"
+                >
+                    Medium
+                </Button>
+                <Button
+                    size="lg"
+                    variant={selectedDifficulty === "hard" ? "danger" : "outline-danger"}
+                    onClick={(e) => handleClick(e, "hard")}
+                    className="difficulty__btn difficulty__btn--hard"
+                >
+                    Hard
+                </Button>
+            </div>
         </>
     );
 };
