@@ -48,7 +48,7 @@ const Settings = () => {
             </div>}
             {data &&
                 <Container className="d-flex flex-column align-items-center justify-content-center settings__container">
-                    <Card className="shadow p-3 mb-5 rounded settings__card">
+                    <Card className="border-0 shadow p-3 mb-5 rounded  settings__card">
                         <Card.Body className="settings__cardBody">
                             <Form className="d-flex flex-column align-items-center justify-content-center gap-4">
                                 <SettingsName/>
