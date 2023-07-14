@@ -9,6 +9,7 @@ const ScoreboardTable = ({data}) => {
 
     const [categories, setCategories] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
+    const [showCategories, setShowCategories] = useState("");
 
     const categoryURL = "https://opentdb.com/api_category.php";
 
@@ -20,6 +21,15 @@ const ScoreboardTable = ({data}) => {
             .then(data => setCategories(data.trivia_categories))
             .catch(err => console.log(err));
     }, []);
+
+    useEffect(() => {
+        if (categories) {
+            const excludeCategories = [13, 16, 19, 20, 21, 24, 25, 26, 27, 28, 29, 30, 32];
+            const availableCategories = categories.filter((item) => !excludeCategories.includes(item.id));
+            console.log(availableCategories);
+            setShowCategories(availableCategories);
+        }
+    }, [categories]);
 
     return (
         <>
@@ -34,12 +44,12 @@ const ScoreboardTable = ({data}) => {
                     <Card className="border-0 shadow p-3 mb-5 rounded scoreboard__card">
                         <Card.Body className="scoreboard__cardBody">
                             <div className="scoreboard__select">
-                                <Form.Select style={{backgroundColor: "#e5e9f0"}} size="lg"
-                                             onChange={e => setSelectedCategory(e.target.value)}>
-                                    <option disabled selected hidden>Choose category</option>
-                                    {categories.map(item => (<option key={item.id} value={item.id}>{item.name}</option>
-                                    ))}
-                                </Form.Select>
+                                {showCategories &&
+                                    <Form.Select style={{backgroundColor: "#e5e9f0"}} size="lg" onChange={e => setSelectedCategory(e.target.value)}>
+                                        <option disabled selected hidden>Choose category</option>
+                                        {showCategories.map(item => (<option key={item.id} value={item.id}>{item.name}</option>
+                                        ))}
+                                    </Form.Select>}
                             </div>
 
                             <div className="scoreboard__table">
