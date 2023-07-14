@@ -20,7 +20,8 @@ const Settings = () => {
         selectedCategory,
         selectedDifficulty,
         showErrorModal,
-        setShowErrorModal
+        setShowErrorModal,
+        setShowCategories
     } = useContext(DataContext);
 
     const categoryURL = "https://opentdb.com/api_category.php";
@@ -36,6 +37,15 @@ const Settings = () => {
                 setShowErrorModal(true);
             });
     }, []);
+
+    useEffect(() => {
+        if (data) {
+            const excludeCategories = [13, 16, 19, 20, 21, 24, 25, 26, 27, 28, 29, 30, 32];
+            const availableCategories = data.filter((item) => !excludeCategories.includes(item.id));
+            console.log(availableCategories);
+            setShowCategories(availableCategories);
+        }
+    }, [data]);
 
     console.log(enteredName);
     console.log(selectedCategory);

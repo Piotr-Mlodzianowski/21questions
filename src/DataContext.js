@@ -10,6 +10,7 @@ export const DataProvider = ({children}) => {
     const [score, setScore] = useState(0);
     const [showErrorModal, setShowErrorModal] = useState(false);
     const [allQuestions, setAllQuestions] = useState(false);
+    const [showCategories, setShowCategories] = useState("");
 
     const values = {
         data,
@@ -25,7 +26,9 @@ export const DataProvider = ({children}) => {
         showErrorModal,
         setShowErrorModal,
         allQuestions,
-        setAllQuestions
+        setAllQuestions,
+        showCategories,
+        setShowCategories
     };
 
     return (
