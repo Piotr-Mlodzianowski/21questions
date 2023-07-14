@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import CurrentQuestion from "./currentQuestion"
+import {DataContext} from "../../DataContext";
 
 const AllQuestions = ({enteredName, selectedCategory, selectedDifficulty, data}) => {
 
 
-    const [allQuestions, setAllQuestions] = useState(false);
+    const {allQuestions, setAllQuestions} = useContext(DataContext);
 
     useEffect(() => {
         setAllQuestions(data.results);

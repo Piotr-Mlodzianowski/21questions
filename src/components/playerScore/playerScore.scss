@@ -1,16 +1,48 @@
 .score {
+  &__body {
+    height: 100%;
+  }
+
+  &__correctAnswers {
+    height: 100%;
+    overflow: scroll;
+  }
+
+  &__answerGroup {
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px 0;
+
+  }
+
   &__container {
     height: 90vh;
     min-width: 50vh;
   }
 
   &__card {
+    width: 45vw;
+    height: 50vh;
     background-color: #e5e9f0;
   }
 
-  &__cardBody {
-    width: 50vw;
-    min-height: 40vh;
+  &__text {
+
+  }
+
+  &__button {
+    background-color: #33a1eb;
+    border: none;
+    color: #fff;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-family: inherit;
+    padding: 1.3rem;
+    margin-top: 30px;
+
   }
 }
 
@@ -20,5 +52,8 @@
   &__scoreLine {
     font-weight: bold;
   }
+}
 
+.score__answerGroup--answer {
+  background-color: #81a1c1;
 }
