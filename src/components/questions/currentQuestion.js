@@ -20,7 +20,7 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
 
     useEffect(() => {
         setCurrentQuestion(() => {
-            return questions[questionCounter];
+            return questions[questionCounter - 1];
         });
         setState(true);
     }, [questionCounter]);
