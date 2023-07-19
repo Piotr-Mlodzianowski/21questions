@@ -4,7 +4,6 @@ import Card from 'react-bootstrap/Card';
 import {DataContext} from "../../DataContext";
 import "./playerScore.scss"
 import Button from "react-bootstrap/Button";
-import Table from "react-bootstrap/Table"
 
 
 const PlayerScore = () => {
@@ -34,7 +33,7 @@ const PlayerScore = () => {
 
                     {clickedButton &&
                         <div className="score__correctAnswers">
-                            <Table striped bordered hover responsive className="text-center">
+                            <table className="table table-striped table-hover text-center">
                                 <thead className="table__head">
                                 <tr>
                                     <th>Question</th>
@@ -51,7 +50,7 @@ const PlayerScore = () => {
                                     </tr>
                                 ))}
                                 </tbody>
-                            </Table>
+                            </table>
                         </div>}
 
                 </Card.Body>
