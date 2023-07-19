@@ -35,3 +35,4 @@ const ScoreboardFetch = () => {
 };
 
 export default ScoreboardFetch;
+
