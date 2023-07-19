@@ -10,7 +10,6 @@ const SettingsPlayButton = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-
         if (enteredName && selectedCategory && selectedDifficulty) {
             navigate("/game");
         }
