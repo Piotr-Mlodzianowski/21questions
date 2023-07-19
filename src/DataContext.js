@@ -3,6 +3,7 @@ import React, {createContext, useState} from 'react';
 export const DataContext = createContext({});
 
 export const DataProvider = ({children}) => {
+    const [fetchedQuestions, setFetchedQuestions] = useState(null);
     const [enteredName, setEnteredName] = useState('');
     const [selectedCategory, setSelectedCategory] = useState("");
     const [selectedDifficulty, setSelectedDifficulty] = useState('');
@@ -16,6 +17,7 @@ export const DataProvider = ({children}) => {
     const [currentGameData, setCurrentGameData] = useState([]);
 
     const values = {
+        fetchedQuestions, setFetchedQuestions,
         data,
         setData,
         enteredName,

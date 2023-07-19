@@ -6,11 +6,11 @@ import "../../scss/loading.scss"
 
 const QuestionsFetch = () => {
     const {
-        enteredName,
         selectedCategory,
         selectedDifficulty,
         showErrorModal,
-        setShowErrorModal
+        setShowErrorModal,
+        setFetchedQuestions
     } = useContext(DataContext);
 
     const apiUrl = `https://opentdb.com/api.php?amount=21&category=${selectedCategory}&difficulty=${selectedDifficulty}`
@@ -22,7 +22,8 @@ const QuestionsFetch = () => {
         })
             .then(response => response.json())
             .then(data => {
-                setData(data);
+                setFetchedQuestions(data);
+                setData(true);
             })
             .catch(err => {
                 console.log(err);
@@ -39,8 +40,7 @@ const QuestionsFetch = () => {
                 <div className="d-flex flex-column align-items-center justify-content-center loading__container">
                     <div className="loading__animation"></div>
                 </div>}
-            {data && <AllQuestions enteredName={enteredName} selectedCategory={selectedCategory}
-                                   selectedDifficulty={selectedDifficulty} data={data}/>}
+            {data && <AllQuestions/>}
         </>
     );
 };

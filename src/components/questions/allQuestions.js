@@ -1,11 +1,11 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect} from "react";
 import CurrentQuestion from "./currentQuestion"
 import {DataContext} from "../../DataContext";
 
-const AllQuestions = ({enteredName, selectedCategory, selectedDifficulty, data}) => {
+const AllQuestions = () => {
 
 
-    const {allQuestions, setAllQuestions} = useContext(DataContext);
+    const {allQuestions, setAllQuestions, fetchedQuestions} = useContext(DataContext);
 
 
     const shuffle = (array) => {
@@ -17,15 +17,14 @@ const AllQuestions = ({enteredName, selectedCategory, selectedDifficulty, data})
     };
 
     useEffect(() => {
-        setAllQuestions(shuffle(data.results));
+        setAllQuestions(shuffle(fetchedQuestions.results));
     }, [])
 
     console.log(allQuestions);
 
     return (
         <>
-            {allQuestions && <CurrentQuestion enteredName={enteredName} selectedCategory={selectedCategory}
-                                              selectedDifficulty={selectedDifficulty} questions={allQuestions}/>}
+            {allQuestions && <CurrentQuestion/>}
         </>
     );
 };

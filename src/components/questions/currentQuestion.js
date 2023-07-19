@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 import "./currentQuestion.scss"
 import ErrorModal from "../errorModal/errorModal";
 
-export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficulty, questions}) => {
+export const CurrentQuestion = () => {
         const [state, setState] = useState(false);
         const [currentQuestion, setCurrentQuestion] = useState(null);
         const [questionCounter, setQuestionCounter] = useState(1);
@@ -16,9 +16,12 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
         const [shuffledAnswers, setShuffledAnswers] = useState([]);
         const [sendScore, setSendScore] = useState([]);
         const {
+            enteredName,
+            selectedCategory,
+            selectedDifficulty,
+            allQuestions,
             score,
             setScore,
-            currentGameData,
             setCurrentGameData,
             showErrorModal,
             setShowErrorModal
@@ -28,7 +31,7 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
 
         useEffect(() => {
             setCurrentQuestion(() => {
-                return questions[questionCounter - 1];
+                return allQuestions[questionCounter - 1];
             });
             setState(true);
         }, [questionCounter]);
@@ -117,7 +120,7 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
             navigate("/playerscore");
         };
 
-        const checkButton = questionCounter === questions.length ?
+        const checkButton = questionCounter === allQuestions.length ?
             <Button className="btn btn-primary question__button" onClick={handleLastQuestion}>Score</Button> :
             <Button className="btn btn-primary question__button" onClick={handleNext}>Next question</Button>;
 
@@ -133,13 +136,11 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
                                 <>
                                     <div className="question__number">Question {questionCounter} of 21
                                     </div>
-                                    <p className="mb-4 fs-4 text-center">
-                                        <div dangerouslySetInnerHTML={{__html: currentQuestion.question}}></div>
-                                    </p>
+                                    <p className="mb-4 fs-4 text-center" dangerouslySetInnerHTML={{__html: currentQuestion.question}}></p>
                                     <Form>
                                         <div className="answers">
-                                            {shuffledAnswers.map((item) => (
-                                                <div className="form-check" key={item.index}>
+                                            {shuffledAnswers.map((item, index) => (
+                                                <div className="form-check" key={index}>
                                                     <input
                                                         className="answers__radio"
                                                         type="radio"
