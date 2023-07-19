@@ -7,6 +7,8 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import "./currentQuestion.scss"
 import ErrorModal from "../errorModal/errorModal";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
 
 export const CurrentQuestion = () => {
         const [state, setState] = useState(false);
@@ -96,24 +98,15 @@ export const CurrentQuestion = () => {
                 lastAnswerData.isCorrect = "Yes";
             }
 
-
-            await fetch(`http://localhost:3000/score`, {
-                method: "POST",
-                body: JSON.stringify(newScore),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).then(response => {
-                if (response.ok) {
-                    setSendScore(prevState => [...prevState, newScore]);
-                }
-                return response.json();
-            }).then(data => {
-                console.log(data);
-            }).catch(err => {
-                console.log(err);
+            try {
+                const db = firebase.firestore();
+                const scoreRef = await db.collection('scores').add(newScore);
+                console.log('Score added with ID:', scoreRef.id);
+                setSendScore((prevState) => [...prevState, newScore]);
+            } catch (error) {
+                console.error('Error adding data:', error);
                 setShowErrorModal(true);
-            });
+            }
 
             setCurrentGameData(prevState => [...prevState, lastAnswerData]);
             setChosenAnswer(null);
@@ -136,7 +129,8 @@ export const CurrentQuestion = () => {
                                 <>
                                     <div className="question__number">Question {questionCounter} of 21
                                     </div>
-                                    <p className="mb-4 fs-4 text-center" dangerouslySetInnerHTML={{__html: currentQuestion.question}}></p>
+                                    <p className="mb-4 fs-4 text-center"
+                                       dangerouslySetInnerHTML={{__html: currentQuestion.question}}></p>
                                     <Form>
                                         <div className="answers">
                                             {shuffledAnswers.map((item, index) => (
