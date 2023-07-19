@@ -4,6 +4,7 @@ export const DataContext = createContext({});
 
 export const DataProvider = ({children}) => {
     const [fetchedQuestions, setFetchedQuestions] = useState(null);
+    const [fetchedScores, setFetchedScores] = useState(null);
     const [enteredName, setEnteredName] = useState('');
     const [selectedCategory, setSelectedCategory] = useState("");
     const [selectedDifficulty, setSelectedDifficulty] = useState('');
@@ -17,7 +18,10 @@ export const DataProvider = ({children}) => {
     const [currentGameData, setCurrentGameData] = useState([]);
 
     const values = {
-        fetchedQuestions, setFetchedQuestions,
+        fetchedQuestions,
+        setFetchedQuestions,
+        fetchedScores,
+        setFetchedScores,
         data,
         setData,
         enteredName,

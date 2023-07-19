@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Form from "react-bootstrap/Form";
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import "./scoreboardTable.scss"
 import "../../scss/loading.scss"
+import {DataContext} from "../../DataContext";
 
-const ScoreboardTable = ({data}) => {
-
+const ScoreboardTable = () => {
+    const {fetchedScores} = useContext(DataContext);
     const [categories, setCategories] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
     const [showCategories, setShowCategories] = useState("");
@@ -45,41 +46,41 @@ const ScoreboardTable = ({data}) => {
                         <Card.Body className="scoreboard__cardBody">
                             <div className="scoreboard__select">
                                 {showCategories &&
-                                    <Form.Select style={{backgroundColor: "#e5e9f0"}} size="lg" onChange={e => setSelectedCategory(e.target.value)}>
-                                        <option disabled selected hidden>Choose category</option>
-                                        {showCategories.map(item => (<option key={item.id} value={item.id}>{item.name}</option>
+                                    <Form.Select style={{backgroundColor: "#e5e9f0"}} size="lg"
+                                                 defaultValue="Choose category"
+                                                 onChange={e => setSelectedCategory(e.target.value)}>
+                                       <option disabled hidden>Choose category</option>
+                                        {showCategories.map(item => (
+                                            <option key={item.id} value={item.id}>{item.name}</option>
                                         ))}
                                     </Form.Select>}
                             </div>
-
                             <div className="scoreboard__table">
-                                {data && (
-                                    <>
-                                        <table className="table table-striped table-hover text-center">
-                                            <thead className="table__head">
-                                            <tr>
-                                                <th>Player</th>
-                                                <th>Difficulty</th>
-                                                <th>Score</th>
-                                            </tr>
-                                            </thead>
+                                {fetchedScores && (
+                                    <table className="table table-striped table-hover text-center">
+                                        <thead className="table__head">
+                                        <tr>
+                                            <th>Player</th>
+                                            <th>Difficulty</th>
+                                            <th>Score</th>
+                                        </tr>
+                                        </thead>
+
+                                        {selectedCategory &&
                                             <tbody>
-                                            {selectedCategory && <>
-                                                {!data && <div>Loading</div>}
-                                                {data && data
-                                                    .sort((a, b) => b.score - a.score)
-                                                    .map((item) =>
-                                                        item.category === selectedCategory &&
-                                                        <tr key={item.id}>
-                                                            <td>{item.name}</td>
-                                                            <td>{item.difficulty.charAt(0).toUpperCase() + item.difficulty.slice(1)}</td>
-                                                            <td>{item.score} points</td>
-                                                        </tr>
-                                                    )}
-                                            </>}
+                                            {fetchedScores.sort((a, b) => b.score - a.score)
+                                                .map((item) =>
+                                                    item.category === selectedCategory &&
+                                                    <tr key={item.id}>
+                                                        <td>{item.name}</td>
+                                                        <td>{item.difficulty.charAt(0).toUpperCase() + item.difficulty.slice(1)}</td>
+                                                        <td>{item.score} points</td>
+                                                    </tr>
+                                                )}
                                             </tbody>
-                                        </table>
-                                    </>
+                                        }
+
+                                    </table>
                                 )}
                             </div>
                         </Card.Body>
