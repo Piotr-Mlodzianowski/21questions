@@ -7,6 +7,8 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import "./currentQuestion.scss"
 import ErrorModal from "../errorModal/errorModal";
+import { push, ref, get } from 'firebase/database';
+import { db } from '../../index.js';
 
 export const CurrentQuestion = () => {
         const [state, setState] = useState(false);
@@ -97,23 +99,23 @@ export const CurrentQuestion = () => {
             }
 
 
-            await fetch(`http://localhost:3000/score`, {
-                method: "POST",
-                body: JSON.stringify(newScore),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).then(response => {
-                if (response.ok) {
-                    setSendScore(prevState => [...prevState, newScore]);
-                }
-                return response.json();
-            }).then(data => {
-                console.log(data);
-            }).catch(err => {
-                console.log(err);
+            try {
+                // Save newScore to Firebase Realtime Database
+                const newScoreRef = ref(db, "scores");
+                const newScoreSnapshot = await push(newScoreRef, newScore);
+
+                // Get the unique ID of the newly added score document
+                const newScoreId = newScoreSnapshot.key;
+
+                // Update the local state (setSendScore) with the newly added score including the unique ID
+                setSendScore((prevState) => [
+                    ...prevState,
+                    {...newScore, id: newScoreId},
+                ]);
+            } catch (error) {
+                console.error("Error saving data to Firebase:", error);
                 setShowErrorModal(true);
-            });
+            }
 
             setCurrentGameData(prevState => [...prevState, lastAnswerData]);
             setChosenAnswer(null);
@@ -136,7 +138,8 @@ export const CurrentQuestion = () => {
                                 <>
                                     <div className="question__number">Question {questionCounter} of 21
                                     </div>
-                                    <p className="mb-4 fs-4 text-center" dangerouslySetInnerHTML={{__html: currentQuestion.question}}></p>
+                                    <p className="mb-4 fs-4 text-center"
+                                       dangerouslySetInnerHTML={{__html: currentQuestion.question}}></p>
                                     <Form>
                                         <div className="answers">
                                             {shuffledAnswers.map((item, index) => (
