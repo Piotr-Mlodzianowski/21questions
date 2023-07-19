@@ -1,6 +1,8 @@
 import React, {useContext} from 'react';
+import { Navbar, Container, Button } from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
 import {DataContext} from "../../DataContext";
+import "./menu.scss";
 
 const Menu = () => {
     const {setEnteredName, setSelectedCategory, setSelectedDifficulty, setScore, setAllQuestions, setCurrentGameData} = useContext(DataContext);
@@ -20,12 +22,21 @@ const Menu = () => {
     }
 
     return (
-        <>
-            <nav>
-                <button onClick={handleNewGameClick}>New game</button>
-                <button onClick={handleScoreboardClick}>Scoreboard</button>
-            </nav>
-        </>
+        <Navbar className="navbar__size" expand="lg">
+            <Container>
+                <Navbar.Toggle aria-controls="navbar-nav" />
+                <Navbar.Collapse id="navbar-nav" className="justify-content-center">
+                    <div className="d-flex">
+                        <Button variant="primary" className="me-2 menuBtn__newGame" size="lg" onClick={handleNewGameClick}>
+                            New Game
+                        </Button>
+                        <Button variant="secondary" size="lg menuBtn__score" onClick={handleScoreboardClick}>
+                            Scoreboard
+                        </Button>
+                    </div>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 };
 

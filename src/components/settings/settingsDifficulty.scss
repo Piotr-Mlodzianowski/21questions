@@ -1,0 +1,37 @@
+.difficulty {
+  &__container {
+    width: 100%;
+  }
+
+  &__btn {
+    width: 30%;
+
+
+    &--easy {
+      border-color: #a3be8c;
+      &:hover {
+        border-color: #a3be8c;
+        background-color: #a3be8c;
+      }
+    }
+
+
+    &--medium {
+      border-color: #ebcb8b;
+      &:hover {
+        border-color: #ebcb8b;
+        background-color: #ebcb8b;
+      }
+    }
+
+
+    &--hard {
+      border-color: #bf616a;
+      &:hover {
+        border-color: #bf616a;
+        color: black;
+        background-color: #bf616a;
+      }
+    }
+  }
+}

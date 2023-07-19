@@ -15,7 +15,6 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
         const [chosenAnswer, setChosenAnswer] = useState(null);
         const [shuffledAnswers, setShuffledAnswers] = useState([]);
         const [sendScore, setSendScore] = useState([]);
-        //const {score, setScore, allAnswers, setAllAnswers, isCorrect, setIsCorrect} = useContext(DataContext);
         const {
             score,
             setScore,
@@ -168,5 +167,6 @@ export const CurrentQuestion = ({enteredName, selectedCategory, selectedDifficul
         );
     }
 ;
+
 
 export default CurrentQuestion;
