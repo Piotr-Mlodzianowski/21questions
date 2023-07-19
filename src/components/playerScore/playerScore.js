@@ -4,10 +4,11 @@ import Card from 'react-bootstrap/Card';
 import {DataContext} from "../../DataContext";
 import "./playerScore.scss"
 import Button from "react-bootstrap/Button";
+import Table from "react-bootstrap/Table"
 
 
 const PlayerScore = () => {
-    const {score, allQuestions} = useContext(DataContext);
+    const {score, currentGameData} = useContext(DataContext);
     const [clickedButton, setClickedButton] = useState(false)
 
     const handleClick = (e) => {
@@ -27,22 +28,30 @@ const PlayerScore = () => {
                                 <p className="text text__lastLine">out of 21 questions</p>
                             </div>
 
-                            <Button className="score__button" onClick={handleClick}>Correct answers</Button>
+                            <Button className="score__button" onClick={handleClick}>Your answers</Button>
                         </>
                     }
 
                     {clickedButton &&
                         <div className="score__correctAnswers">
-                            {
-                                allQuestions.map((item, index) => (
-                                    <div key={index} className="score__answerGroup">
-                                        <p className="score__answerGroup--question"
-                                           dangerouslySetInnerHTML={{__html: item.question}}></p>
-                                        <p className="score__answerGroup--answer"
-                                           dangerouslySetInnerHTML={{__html: `Correct answer: ${item.correct_answer}`}}></p>
-                                    </div>
-                                ))
-                            }
+                            <Table striped bordered hover responsive className="text-center">
+                                <thead className="table__head">
+                                <tr>
+                                    <th>Question</th>
+                                    <th>Your answer</th>
+                                    <th>Correct</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {currentGameData.map((item, index) => (
+                                    <tr key={index} className="score__answerGroup">
+                                        <td dangerouslySetInnerHTML={{__html: item.question}}></td>
+                                        <td dangerouslySetInnerHTML={{__html: item.answer}}></td>
+                                        <td dangerouslySetInnerHTML={{__html: item.isCorrect}}></td>
+                                    </tr>
+                                ))}
+                                </tbody>
+                            </Table>
                         </div>}
 
                 </Card.Body>

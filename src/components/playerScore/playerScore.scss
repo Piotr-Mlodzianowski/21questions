@@ -5,7 +5,13 @@
 
   &__correctAnswers {
     height: 100%;
-    overflow: scroll;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &__answerGroup {
@@ -56,4 +62,13 @@
 
 .score__answerGroup--answer {
   background-color: #81a1c1;
+}
+
+.table {
+  &__head {
+    position: sticky;
+    top: 0;
+    background-color: #e5e9f0;
+    z-index: 1;
+  }
 }
