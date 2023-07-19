@@ -7,8 +7,17 @@ const AllQuestions = ({enteredName, selectedCategory, selectedDifficulty, data})
 
     const {allQuestions, setAllQuestions} = useContext(DataContext);
 
+
+    const shuffle = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    };
+
     useEffect(() => {
-        setAllQuestions(data.results);
+        setAllQuestions(shuffle(data.results));
     }, [])
 
     console.log(allQuestions);

@@ -56,7 +56,7 @@ const ScoreboardTable = ({data}) => {
                                 {data && (
                                     <>
                                         <table className="table table-striped table-hover text-center">
-                                            <thead>
+                                            <thead className="table__head">
                                             <tr>
                                                 <th>Player</th>
                                                 <th>Difficulty</th>
