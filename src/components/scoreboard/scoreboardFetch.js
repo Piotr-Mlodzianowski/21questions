@@ -5,7 +5,7 @@ import ErrorModal from "../errorModal/errorModal";
 //json-server database/db.json --watch
 
 const ScoreboardFetch = () => {
-    const {showErrorModal, setShowErrorModal} = useContext(DataContext);
+    const {showErrorModal, setShowErrorModal, setFetchedScores} = useContext(DataContext);
     const [data, setData] = useState(false);
 
     const scoreURL = "http://localhost:3000/score"
@@ -15,7 +15,10 @@ const ScoreboardFetch = () => {
             method: "GET",
         })
             .then(response => response.json())
-            .then(data => setData(data))
+            .then(data => {
+                setFetchedScores(data);
+                setData(true);
+            })
             .catch(err => {
                 console.log(err);
                 setShowErrorModal(true);
@@ -25,7 +28,7 @@ const ScoreboardFetch = () => {
     return (
         <>
             {showErrorModal && <ErrorModal/>}
-            <ScoreboardTable data={data}/>
+            {data && <ScoreboardTable/>}
         </>
 
     );
