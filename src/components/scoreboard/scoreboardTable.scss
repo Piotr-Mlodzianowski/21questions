@@ -1,0 +1,39 @@
+.scoreboard {
+  &__container {
+    height: 90vh;
+
+  }
+
+  &__select {
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+    height: 25%;
+  }
+
+  &__card {
+    width: 45vw;
+    height: 50vh;
+    background-color: #e5e9f0;
+  }
+
+  &__cardBody {
+    height: 100%;
+  }
+
+  &__table {
+    height: 75%;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &__head {
+      position: sticky;
+      top: 0;
+      background-color: #e5e9f0;
+      z-index: 1;
+    }
+  }
+}

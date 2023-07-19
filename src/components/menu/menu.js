@@ -3,13 +3,15 @@ import {useNavigate} from 'react-router-dom';
 import {DataContext} from "../../DataContext";
 
 const Menu = () => {
-    const {setEnteredName, setSelectedCategory, setSelectedDifficulty, setScore} = useContext(DataContext);
+    const {setEnteredName, setSelectedCategory, setSelectedDifficulty, setScore, setAllQuestions, setCurrentGameData} = useContext(DataContext);
     const navigation = useNavigate();
     const handleNewGameClick = () => {
         setEnteredName("");
         setSelectedCategory("");
         setSelectedDifficulty("");
         setScore(0);
+        setAllQuestions(false);
+        setCurrentGameData([]);
         navigation("/settings");
     };
 
