@@ -10,6 +10,16 @@ import Col from 'react-bootstrap/Col';
 import "./currentQuestion.scss"
 import ErrorModal from "../errorModal/errorModal";
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore } from "firebase/firestore";
+
+
+import { doc, setDoc } from "firebase/firestore";
+
+
 export const CurrentQuestion = () => {
         const [state, setState] = useState(false);
         const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -28,6 +38,22 @@ export const CurrentQuestion = () => {
             showErrorModal,
             setShowErrorModal
         } = useContext(DataContext);
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC_kv26-i6CASXEMXHDvkVc3OJxtz1H-z8",
+            authDomain: "questions-v1-ee48e.firebaseapp.com",
+            projectId: "questions-v1-ee48e",
+            storageBucket: "questions-v1-ee48e.appspot.com",
+            messagingSenderId: "434024317922",
+            appId: "1:434024317922:web:7c924c2e0b21e41ac0afbb"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Initialize Cloud Firestore and get a reference to the service
+        const db = getFirestore(app);
 
         const navigate = useNavigate();
 
@@ -98,14 +124,11 @@ export const CurrentQuestion = () => {
                 lastAnswerData.isCorrect = "Yes";
             }
 
-
-            await fetch(`http://localhost:3000/score`, {
-                method: "POST",
-                body: JSON.stringify(newScore),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).then(response => {
+            //instead of score.name use unique identifier
+            await setDoc(doc(db, "scores", newScore.name),
+                newScore
+            )
+            .then(response => {
                 if (response.ok) {
                     setSendScore(prevState => [...prevState, newScore]);
                 }
