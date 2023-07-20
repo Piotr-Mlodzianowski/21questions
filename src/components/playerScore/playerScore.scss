@@ -27,15 +27,19 @@
 
   }
 
-
   &__card {
-    height: 50vh;
+    height: 100%;
     background-color: #e5e9f0;
   }
 
   &__text {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
+
 
   &__button {
     background-color: #33a1eb;
@@ -48,7 +52,6 @@
     font-family: inherit;
     padding: 1.3rem;
     margin-top: 30px;
-
   }
 }
 
@@ -70,5 +73,11 @@
     top: 0;
     background-color: #e5e9f0;
     z-index: 1;
+  }
+}
+
+.correctAnswers{
+  &__body {
+    height: 50vh;
   }
 }
