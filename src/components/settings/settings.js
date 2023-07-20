@@ -77,9 +77,11 @@ const Settings = () => {
 
                                             <Button className="settings__playButton" variant="outline-success" size="lg"
                                                     disabled>
-                                                 {!(enteredName) && <span>Enter your name | </span>}
-                                                {!(selectedCategory) && <span>Choose category | </span>}
-                                                {!(selectedDifficulty) && <span>Choose difficulty</span>}
+                                                {!(enteredName) && "Enter your name"}
+                                                {!(enteredName || selectedCategory && selectedDifficulty) && " | "}
+                                                {!(selectedCategory) && "Choose category"}
+                                                {!(selectedCategory || selectedDifficulty) && " | "}
+                                                {!(selectedDifficulty) && "Choose difficulty"}
                                             </Button>
                                         )}
                                     </Form>
