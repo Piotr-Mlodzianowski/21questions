@@ -61,7 +61,7 @@ const Settings = () => {
             {data &&
                 <Container fluid className="d-flex flex-column justify-content-center settings__container">
                     <Row className="justify-content-center">
-                        <Col xxs={12} md={5}>
+                        <Col xxs={12} md={10} lg={5}>
                             <Card className="border-0 shadow p-3 mb-5 rounded  settings__card">
                                 <Card.Body className="settings__cardBody">
                                     <Form

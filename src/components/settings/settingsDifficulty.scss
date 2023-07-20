@@ -1,11 +1,16 @@
 .difficulty {
   &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
     width: 100%;
+    @media (min-width: 1070px) {
+      flex-direction: row;
+    }
   }
 
   &__btn {
-    width: 30%;
-
+    width: 100%;
 
     &--easy {
       border-color: #a3be8c;

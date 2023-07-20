@@ -39,7 +39,7 @@ const ScoreboardTable = () => {
             <Container
                 className="d-flex flex-column justify-content-center scoreboard__container">
                 <Row className="justify-content-center">
-                    <Col xxs={12} md={5}>
+                    <Col xxs={12} md={10} lg={5}>
                         {!categories &&
                             <div
                                 className="d-flex flex-column align-items-center justify-content-center loading__container">

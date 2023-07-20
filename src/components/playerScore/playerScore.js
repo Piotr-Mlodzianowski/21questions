@@ -20,7 +20,7 @@ const PlayerScore = () => {
     return (
         <Container className="d-flex flex-column justify-content-center score__container">
             <Row className="justify-content-center">
-                <Col xxs={12} md={7}>
+                <Col Col xxs={12} md={10} lg={7}>
                     <Card className="border-0 shadow p-3 mb-5 rounded score__card">
                         <Card.Body
                             className="d-flex flex-column align-items-center justify-content-between score__body">
