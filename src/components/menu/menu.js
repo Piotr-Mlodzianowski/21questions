@@ -23,10 +23,8 @@ const Menu = () => {
 
     return (
         <Navbar className="navbar__size" expand="lg">
-            <Container>
-                <Navbar.Toggle aria-controls="navbar-nav" />
-                <Navbar.Collapse id="navbar-nav" className="justify-content-center">
-                    <div className="d-flex">
+            <Container id="navbar-nav" className="justify-content-center">
+                    <div className="d-flex justify-content-center">
                         <Button variant="primary" className="me-2 menuBtn__newGame" size="lg" onClick={handleNewGameClick}>
                             New Game
                         </Button>
@@ -34,7 +32,6 @@ const Menu = () => {
                             Scoreboard
                         </Button>
                     </div>
-                </Navbar.Collapse>
             </Container>
         </Navbar>
     );
