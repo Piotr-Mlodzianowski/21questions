@@ -13,6 +13,8 @@ import "../../scss/loading.scss"
 import ErrorModal from "../errorModal/errorModal";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 const Settings = () => {
     const {
@@ -72,9 +74,12 @@ const Settings = () => {
                                         {enteredName && selectedCategory && selectedDifficulty ? (
                                             <SettingsPlayButton/>
                                         ) : (
+
                                             <Button className="settings__playButton" variant="outline-success" size="lg"
                                                     disabled>
-                                                Play
+                                                 {!(enteredName) && <span>Enter your name | </span>}
+                                                {!(selectedCategory) && <span>Choose category | </span>}
+                                                {!(selectedDifficulty) && <span>Choose difficulty</span>}
                                             </Button>
                                         )}
                                     </Form>
