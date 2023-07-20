@@ -1,7 +1,7 @@
 .question {
   &__container {
     height: 90vh;
-    min-width: 50vh;
+    width: 100vw;
   }
 
   &__card {
@@ -9,7 +9,6 @@
   }
 
   &__cardBody {
-    width: 50vw;
     min-height: 40vh;
   }
 
