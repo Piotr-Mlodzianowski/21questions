@@ -2,8 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ThemeProvider from 'react-bootstrap/ThemeProvider'
 import Routing from "./routing"
-import {Container, Row} from 'react-bootstrap';
-
+import {Container, Row, Col} from 'react-bootstrap';
 
 
 function App() {
@@ -14,7 +13,7 @@ function App() {
         >
             <Container fluid className="background">
                 <Row className="justify-content-center align-items-center h-100">
-                    <Routing />
+                        <Routing/>
                 </Row>
             </Container>
         </ThemeProvider>

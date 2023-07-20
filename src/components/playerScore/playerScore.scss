@@ -1,4 +1,9 @@
 .score {
+  &__container {
+    height: 90vh;
+    width: 100vw;
+  }
+
   &__body {
     height: 100%;
   }
@@ -22,13 +27,8 @@
 
   }
 
-  &__container {
-    height: 90vh;
-    min-width: 50vh;
-  }
 
   &__card {
-    width: 45vw;
     height: 50vh;
     background-color: #e5e9f0;
   }
