@@ -17,7 +17,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, addDoc , collection} from "firebase/firestore";
 
 
 export const CurrentQuestion = () => {
@@ -125,7 +125,7 @@ export const CurrentQuestion = () => {
             }
 
             //instead of score.name use unique identifier
-            await setDoc(doc(db, "scores", newScore.name),
+            await addDoc(collection(db, "scores"),
                 newScore
             )
             .then(response => {
