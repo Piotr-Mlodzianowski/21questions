@@ -142,10 +142,10 @@ export const CurrentQuestion = () => {
                                             </div>
                                             <p className="mb-4 fs-4 text-center"
                                                dangerouslySetInnerHTML={{__html: currentQuestion.question}}></p>
-                                            <Form>
+                                            <Form className="form">
                                                 <div className="answers">
                                                     {shuffledAnswers.map((item, index) => (
-                                                        <div className="form-check" key={index}>
+                                                        <div className="form-check answers__answer" key={index}>
                                                             <input
                                                                 className="answers__radio"
                                                                 type="radio"
@@ -155,7 +155,7 @@ export const CurrentQuestion = () => {
                                                                 checked={chosenAnswer === item}
                                                                 onChange={(e) => setChosenAnswer(e.target.value)}
                                                             />
-                                                            <label className="form-check-label answers__label"
+                                                            <label className="form-check-label answers__label p-3 border"
                                                                    htmlFor={item}
                                                                    dangerouslySetInnerHTML={{__html: item}}/>
                                                         </div>
