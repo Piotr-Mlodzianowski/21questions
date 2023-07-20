@@ -142,10 +142,10 @@ export const CurrentQuestion = () => {
                                             </div>
                                             <p className="mb-4 fs-4 text-center"
                                                dangerouslySetInnerHTML={{__html: currentQuestion.question}}></p>
-                                            <Form className="form">
+                                            <Form className="form d-flex flex-column align-items-center justify-content-between">
                                                 <div className="answers">
                                                     {shuffledAnswers.map((item, index) => (
-                                                        <div className="form-check answers__answer" key={index}>
+                                                        <div className="answers__answer" key={index}>
                                                             <input
                                                                 className="answers__radio"
                                                                 type="radio"
