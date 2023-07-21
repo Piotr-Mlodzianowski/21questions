@@ -104,11 +104,18 @@ export const CurrentQuestion = () => {
                 lastAnswerData.isCorrect = "Yes";
             }
 
-            //instead of score.name use unique identifier
-            await addDoc(collection(db, "scores"),
+            try {
+                await addDoc(collection(db, "scores"), newScore);
+                setSendScore((prevState) => [...prevState, newScore]);
+            } catch (error) {
+                console.log(error);
+                setShowErrorModal(true);
+            }
+
+           /* await addDoc(collection(db, "scores"),
                 newScore
             )
-            /*.then(response => {
+            .then(response => {
                 if (response.ok) {
                     setSendScore(prevState => [...prevState, newScore]);
                 }
@@ -118,12 +125,20 @@ export const CurrentQuestion = () => {
             }).catch(err => {
                 console.log(err);
                 setShowErrorModal(true);
-            });*/
-
+            })
+*/
             setCurrentGameData(prevState => [...prevState, lastAnswerData]);
             setChosenAnswer(null);
             navigate("/playerscore");
         };
+
+    useEffect(() => {
+        // Prompt confirmation when reload page is triggered
+        window.onbeforeunload = () => { return "" };
+
+        // Unmount the window.onbeforeunload event
+        return () => { window.onbeforeunload = null };
+    }, []);
 
         const checkButton = questionCounter === allQuestions.length ?
             <Button className="btn btn-primary question__button" onClick={handleLastQuestion}>Score</Button> :

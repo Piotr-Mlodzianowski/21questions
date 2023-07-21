@@ -16,21 +16,18 @@ const ScoreboardFetch = () => {
 
     useEffect(() => {
         getDocs(collection(db, "scores"))
-            //.then(response => response.json())
             .then(collection => {
                 let array = []
                 collection.forEach((doc) => {
                     array.push(doc.data());
-                    //console.log(`${doc.id} => ${doc.data()}`);
                 });
-
                 setFetchedScores(array);
                 setData(true);
             })
-            /*.catch(err => {
+            .catch(err => {
                 console.log(err);
                 setShowErrorModal(true);
-            });*/
+            });
     }, [])
 
     return (

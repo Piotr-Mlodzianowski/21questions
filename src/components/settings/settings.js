@@ -13,8 +13,6 @@ import "../../scss/loading.scss"
 import ErrorModal from "../errorModal/errorModal";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
 
 const Settings = () => {
     const {
@@ -31,7 +29,7 @@ const Settings = () => {
     const categoryURL = "https://opentdb.com/api_category.php";
 
     useEffect(() => {
-        fetch(categoryURL, {
+       fetch(categoryURL, {
             method: "GET",
         })
             .then(response => response.json())
@@ -77,6 +75,7 @@ const Settings = () => {
 
                                             <Button className="settings__playButton" variant="outline-success" size="lg"
                                                     disabled>
+                                                {/*{!(enteredName && selectedCategory && selectedDifficulty) && "Please fill: "}*/}
                                                 {!(enteredName) && "Enter your name"}
                                                 {!(enteredName || selectedCategory && selectedDifficulty) && " | "}
                                                 {!(selectedCategory) && "Choose category"}
