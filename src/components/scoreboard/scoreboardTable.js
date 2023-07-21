@@ -7,9 +7,10 @@ import "../../scss/loading.scss"
 import {DataContext} from "../../DataContext";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import ErrorModal from "../errorModal/errorModal";
 
 const ScoreboardTable = () => {
-    const {fetchedScores} = useContext(DataContext);
+    const {fetchedScores, showErrorModal, setShowErrorModal,} = useContext(DataContext);
     const [categories, setCategories] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
     const [showCategories, setShowCategories] = useState("");
@@ -22,7 +23,10 @@ const ScoreboardTable = () => {
         })
             .then(response => response.json())
             .then(data => setCategories(data.trivia_categories))
-            .catch(err => console.log(err));
+            .catch(err => {
+                setShowErrorModal(true);
+                console.log(err);
+            });
     }, []);
 
     useEffect(() => {
@@ -36,6 +40,7 @@ const ScoreboardTable = () => {
 
     return (
         <>
+            {showErrorModal && <ErrorModal/>}
             <Container
                 className="d-flex flex-column justify-content-center scoreboard__container">
                 <Row className="justify-content-center">
