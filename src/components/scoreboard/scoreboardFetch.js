@@ -4,6 +4,7 @@ import {DataContext} from "../../DataContext";
 import ErrorModal from "../errorModal/errorModal";
 //json-server database/db.json --watch
 import db from "../../index";
+import "../../scss/loading.scss"
 
 
 import { collection, getDocs } from "firebase/firestore";
@@ -28,11 +29,15 @@ const ScoreboardFetch = () => {
                 console.log(err);
                 setShowErrorModal(true);
             });
-    }, [])
+    }, []);
 
     return (
         <>
             {showErrorModal && <ErrorModal/>}
+            {!data && <div
+                className="d-flex flex-column align-items-center justify-content-center loading__container">
+                <div className="loading__animation"></div>
+            </div>}
             {data && <ScoreboardTable/>}
         </>
 

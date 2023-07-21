@@ -14,7 +14,7 @@ const PlayerScore = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        setClickedButton(true)
+        setClickedButton(prevState => !prevState);
     }
 
     return (
@@ -58,6 +58,7 @@ const PlayerScore = () => {
                                         </tbody>
                                     </table>
                                 </div>
+                                <Button className="score__button" onClick={handleClick}>Check your score</Button>
                             </Card.Body>}
                     </Card>
                 </Col>
