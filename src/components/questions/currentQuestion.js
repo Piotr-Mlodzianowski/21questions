@@ -32,9 +32,6 @@ export const CurrentQuestion = () => {
             setShowErrorModal
         } = useContext(DataContext);
 
-        // Your web app's Firebase configuration
-
-
         const navigate = useNavigate();
 
         useEffect(() => {
