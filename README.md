@@ -1,4 +1,4 @@
-# Opis
+# 21questions
 
 Moja autorska aplikacja quiz zadająca 21 pytań z określonej przez użytkownika kategorii oraz poziomie trudności. Po udzieleniu przez użytkownika odpowiedzi na wszystkie pytania, wyświetlany jest mu uzyskany wynik wraz z możliwością sprawdzenia na które pytania udzielił dobrych oraz złych odpowiedzi. Aplikacja zapisuje wynik użytkownika oraz przechowuje go w dostępnej tablicy wyników.
 
